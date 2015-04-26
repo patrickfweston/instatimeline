@@ -1,6 +1,17 @@
 var instagramApp = angular.module('instagramApp', []);
 
-instagramApp.controller('indexController', ['$scope', function($scope) {
+instagramApp.controller('indexController', ['$scope', 
+	function($scope){
+
+	// var _name = '';
+ //    $scope.user = {
+	//       name: function(newName) {
+	//         if (angular.isDefined(newName)) {
+	//           _name = newName;
+	//         }
+	//         return _name;
+	//       }
+ //    };
 	$scope.generate = function(){
   		alert("generating timeline");
   	};
@@ -11,17 +22,6 @@ instagramApp.controller('indexController', ['$scope', function($scope) {
 
 instagramApp.controller('instagramController', ['$scope', 'Instagram',
 	function($scope, Instagram){
-		
-		$scope.layout = 'grid';
-
-
-		$scope.setLayout = function(layout){
-			$scope.layout = layout;
-		}
-
-		$scope.isLayout = function(layout){
-			return $scope.layout == layout;
-		}
 
 		$scope.example1 = {
 			hash: 'pinerowedding2015'
