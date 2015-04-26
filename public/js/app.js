@@ -16,7 +16,7 @@ config(['$routeProvider', function($routeProvider)
   // route for the results page
             .when('/results.html', {
                 templateUrl : 'results.html',
-                controller  : 'resultsController'
+                controller  : 'InstagramCtrl'
             })
 }]);
 
