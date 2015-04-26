@@ -4,8 +4,20 @@
 angular.module('instagramApp', [
   'ngRoute'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/index.html'});
+config(['$routeProvider', function($routeProvider) 
+
+{
+  $routeProvider
+  			.when('/index.html', {
+  				templateUrl : 'index.html',
+  				controller : 'indexController'
+  			})
+
+  // route for the results page
+            .when('/results.html', {
+                templateUrl : 'results.html',
+                controller  : 'resultsController'
+            })
 }]);
 
 
