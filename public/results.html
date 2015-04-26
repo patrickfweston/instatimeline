@@ -14,67 +14,43 @@
 </head>
 <body ng-controller="instagramController">
 
-    <div class="container">
+    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3>#{{example1.hash}}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="instagram-list">
-                            <li class="instagram-item" ng-repeat="item in example1.items">
-                                <a ng-href="{{item.link}}">
-                                    <img width="80" height="80" ng-src="{{ item.images.low_resolution.url }}" src="" alt="">
-                                </a>
-                            </li>
-                        </ul>
-            <div ng-show="example1.error" class="alert alert-danger">
-              <strong>Warning!</strong><br/>{{example1.error}}.
-            </div> 
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3>#{{example2.hash}}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="instagram-list">
-                            <li class="instagram-item" ng-repeat="item in example2.items">
-                                <a ng-href="{{item.link}}">
-                                    <img width="80" height="80" ng-src="{{ item.images.low_resolution.url }}" src="" alt="">
-                                </a>
-                            </li>
-                        </ul>
-            <div ng-show="example2.error" class="alert alert-danger">
-              <strong>Warning!</strong><br/>{{example2.error}}.
-            </div>                         
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3>#{{example3.hash}}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="instagram-list">
-                            <li class="instagram-item" ng-repeat="item in example3.items">
-                                <a ng-href="{{item.link}}">
-                                    <img width="80" height="80" ng-src="{{ item.images.low_resolution.url }}" src="" alt="">
-                                </a>
-                            </li>
-                        </ul>
-            <div ng-show="example3.error" class="alert alert-danger">
-              <strong>Warning!</strong><br/>{{example3.error}}.
-            </div>                        
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-8">
+
+            <h3>#{{example1.hash}}</h3>
+            <ul class="instagram-list">
+              <li class="instagram-item" ng-repeat="item in example1.items">
+                <a ng-href="{{item.link}}">
+                    <img width="400" height="400" ng-src="{{ item.images.low_resolution.url }}" src="" alt="">
+                </a>
+              </li>
+            </ul>
         </div>
+
+        <div class="col-md-8">
+
+            <h3>#{{example2.hash}}</h3>
+            <ul class="instagram-list">
+              <li class="instagram-item" ng-repeat="item in example2.items">
+                <a ng-href="{{item.link}}">
+                    <img width="400" height="400" ng-src="{{ item.images.low_resolution.url }}" src="" alt="">
+                </a>
+              </li>
+            </ul>
+        </div>
+
+      <div class="col-md-8">
+
+          <h3>#{{example3.hash}}</h3>
+          <ul class="instagram-list">
+            <li class="instagram-item" ng-repeat="item in example3.items">
+              <a ng-href="{{item.link}}">
+                  <img width="400" height="400" ng-src="{{ item.images.low_resolution.url }}" src="" alt="">
+              </a>
+            </li>
+          </ul>
+      </div>
 
     </div>
 

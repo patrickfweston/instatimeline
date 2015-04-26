@@ -11,6 +11,8 @@ instagramApp.controller('indexController', ['$scope', function($scope) {
 
 instagramApp.controller('instagramController', ['$scope', 'Instagram',
 	function($scope, Instagram){
+		
+
 		$scope.example1 = {
 			hash: 'angular'
 		};
@@ -35,7 +37,7 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram',
 			}
 		};
 
-		Instagram.get(9, $scope.example1.hash).success(function(response) {
+		Instagram.get(100, $scope.example1.hash).success(function(response) {
 			instagramSuccess($scope.example1, response);
 		});
 
