@@ -7,14 +7,9 @@ instagramApp.controller('indexController', ['$scope', function($scope) {
 
 }]);
 
-// instagramApp.controller('resultsController', ['$scope', function($scope) {
-// 	$scope.results = "SHOW RESULTS";
 
 
-// }]);
-
-
-instagramApp.controller('InstagramCtrl', ['$scope', 'Instagram',
+instagramApp.controller('instagramController', ['$scope', 'Instagram',
 	function($scope, Instagram){
 		$scope.example1 = {
 			hash: 'angular'
