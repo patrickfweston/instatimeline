@@ -24,15 +24,15 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram',
 	function($scope, Instagram){
 
 		$scope.example1 = {
-			hash: 'pinerowedding2015'
+			hash: 'hanksparty'
 		};
 
 		$scope.example2 = {
-			hash: 'BrideToBe'
+			hash: 'marcheet'
 		};
 
 		$scope.example3 = {
-			hash: 'FlowerGirl'
+			hash: 'pagingthemarcels'
 		};
 
 		var instagramSuccess = function(scope, res) {
@@ -47,15 +47,15 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram',
 			}
 		};
 
-		Instagram.get(10, $scope.example1.hash).success(function(response) {
+		Instagram.get(20, $scope.example1.hash).success(function(response) {
 			instagramSuccess($scope.example1, response);
 		});
 
-		Instagram.get(10, $scope.example2.hash).success(function(response) {
+		Instagram.get(20, $scope.example2.hash).success(function(response) {
 			instagramSuccess($scope.example2, response);
 		});
 
-		Instagram.get(10, $scope.example3.hash).success(function(response) {
+		Instagram.get(20, $scope.example3.hash).success(function(response) {
 			instagramSuccess($scope.example3, response);
 		});
 
