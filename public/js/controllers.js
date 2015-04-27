@@ -24,11 +24,11 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram',
 	function($scope, Instagram){
 
 		$scope.example1 = {
-			hash: 'hanksparty'
+			hash: 'marcheet'
 		};
 
 		$scope.example2 = {
-			hash: 'marcheet'
+			hash: 'hanksparty'
 		};
 
 		$scope.example3 = {
