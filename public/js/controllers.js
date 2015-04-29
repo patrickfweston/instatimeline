@@ -3,15 +3,6 @@ var instagramApp = angular.module('instagramApp', []);
 instagramApp.controller('indexController', ['$scope', 
 	function($scope){
 
-	// var _name = '';
- //    $scope.user = {
-	//       name: function(newName) {
-	//         if (angular.isDefined(newName)) {
-	//           _name = newName;
-	//         }
-	//         return _name;
-	//       }
- //    };
 	$scope.generate = function(){
   		alert("generating timeline");
   	};
@@ -36,10 +27,6 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram',
 		};
 
 		var instagramSuccess = function(scope, res) {
-			// if (res.meta.code !== 200) {
-			// 	scope.error = res.meta.error_type + ' | ' + res.meta.error_message;
-			// 	return;
-			// }
 			if (res.data.length > 0) {
 				scope.items = res.data;
 			} else {
