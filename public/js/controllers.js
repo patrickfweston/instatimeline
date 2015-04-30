@@ -18,13 +18,13 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram', '$http',
 			hash: 'marcheet'
 		};
 
-		// $scope.example2 = {
-		// 	hash: 'hanksparty'
-		// };
+		$scope.example2 = {
+			hash: 'hanksparty'
+		};
 
-		// $scope.example3 = {
-		// 	hash: 'pagingthemarcels'
-		// };
+		$scope.example3 = {
+			hash: 'pagingthemarcels'
+		};
 
 		var instagramSuccess = function(scope, res) {
 			if (res.data.length > 0) {
