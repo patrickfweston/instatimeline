@@ -11,8 +11,33 @@
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <!-- jQuery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <!-- BEGIN TimelineJS -->
+        <script type="text/javascript" src="http://cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
+
+        <!-- END TimelineJS -->
+
+
 </head>
 <body ng-controller="instagramController">
+  
+  <script>
+            // $(document).ready(function() {
+            //     createStoryJS({
+            //         type:       'timeline',
+            //         width:      '800',
+            //         height:     '600',
+            //         source:     {{item}},
+            //         embed_id:   'my-timeline'
+            //     });
+            // });
+  </script>
+
+    <h1> MY TIMELINE </h1>
+    <div id="my-timeline"> </div> 
+
+
 
     <div class="container-fluid">
 
@@ -53,8 +78,6 @@
       </div>
 
     </div>
-
-
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
