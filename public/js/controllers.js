@@ -29,21 +29,22 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram', '$http',
 		var instagramSuccess = function(scope, res) {
 			if (res.data.length > 0) {
 				scope.items = res.data;
+				console.log(res.data[0])
+
+				instaItem = res.data[0];
 				var testObject = {
 					    "timeline":
 					    {
 					        "headline":"WEDDING PHOTO",
 					        "type":"default",
-					        "text":"<p>FIRST PHOTO OF INSTAGRAM</p>",
+					        "text": instaItem.caption.text,
 					        "asset": {
-					            "media": res.data[0].images.standard_resolution.url,
-					            "credit":"Credit Name Goes Here",
-					            "caption":"Caption text goes here"
+					            "media": instaItem.images.standard_resolution.url,
+					            "credit": "@" + instaItem.user.username
 					        },
 					        "date": [
 					            {
-					                "startDate":"2011,12,10",
-					                "endDate":"2011,12,11",
+					                "startDate": Date(instaItem.created_time * 1000),
 					                "headline":"Headline Goes Here",
 					                "text":"<p>Body text goes here, some HTML is OK</p>",
 					                "tag":"This is Optional",
@@ -56,15 +57,7 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram', '$http',
 					                }
 					            }
 					        ],
-					        "era": [
-					            {
-					                "startDate":"2011,12,10",
-					                "endDate":"2011,12,11",
-					                "headline":"Headline Goes Here",
-					                "tag":"This is Optional"
-					            }
-
-					        ]
+					        
 
 					    }
 					}
@@ -85,13 +78,13 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram', '$http',
 			instagramSuccess($scope.example1, response);
 		});
 
-		Instagram.get(20, $scope.example2.hash).success(function(response) {
-			instagramSuccess($scope.example2, response);
-		});
+		// Instagram.get(20, $scope.example2.hash).success(function(response) {
+		// 	instagramSuccess($scope.example2, response);
+		// });
 
-		Instagram.get(20, $scope.example3.hash).success(function(response) {
-			instagramSuccess($scope.example3, response);
-		});
+		// Instagram.get(20, $scope.example3.hash).success(function(response) {
+		// 	instagramSuccess($scope.example3, response);
+		// });
 
 		$http.get('tests.json').
 		    success(function(data, status, headers, config) {
