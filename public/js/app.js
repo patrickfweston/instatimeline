@@ -8,16 +8,16 @@ config(['$routeProvider', function($routeProvider)
 
 {
   $routeProvider
-  			.when('/index.html', {
-  				templateUrl : 'index.html',
-  				controller : 'indexController'
-  			})
-
   // route for the results page
-            .when('/results.html', {
-                templateUrl : 'results.html',
-                controller  : 'instagramController'
-            })
+    .when('/results', {
+        templateUrl : 'results.html',
+        controller  : 'instagramController'
+    })
+    .when('/splash', {
+      templateUrl : 'splash.html',
+      controller : 'indexController'
+    })
+    .otherwise({redirectTo: '/splash'})
 }]);
 
 
