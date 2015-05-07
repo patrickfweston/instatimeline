@@ -1,3 +1,15 @@
-#my-timeline {
-  max-height: 700px;
+html, body, #wrapper {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.timeline--above {
+  height: 20%;
+  overflow: hidden;
+}
+
+.timeline {
+  height: 80%;
 }

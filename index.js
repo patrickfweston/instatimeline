@@ -50,7 +50,6 @@ function instaToTimeline(data, htag) {
 
   for (i = 0; i < (data.data).length; i++) {
     row = data.data[i];
-    console.log(row);
 
     tempDate = moment(new Date(row.created_time * 1000));
     // dateString = tempDate.format("YYYY,MM,DD,HH,mm,ss")
