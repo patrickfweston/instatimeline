@@ -34,29 +34,46 @@ app.get('/feed', function(req, res) {
 
 function instaToTimeline(data, htag) {
   var instaObj = {
-    "timeline": {
-      "headline": "#" + htag + " wedding",
-      "type":"default",
-      "text": "Some body text here",
-      "date": [],
-    }
+    "title": {
+      "media": {
+        "url": "",
+        "caption": "",
+        "credit": ""
+      },
+      "text": {
+        "headline": "#" + htag + " wedding",
+        "text": "Some body text here"
+      }
+    },
+    "events": []
   }
 
   for (i = 0; i < (data.data).length; i++) {
     row = data.data[i];
+    console.log(row);
 
     tempDate = moment(new Date(row.created_time * 1000));
-    dateString = tempDate.format("YYYY,MM,DD,HH,mm,ss")
+    // dateString = tempDate.format("YYYY,MM,DD,HH,mm,ss")
 
 
-    instaObj.timeline.date[i] = {
-      "startDate": dateString,
-      "headline": "#" + htag + " wedding",
-      "text": row.caption.text,
-      "asset": {
-       "media": row.images.standard_resolution.url,
+    instaObj.events[i] = {
+      "media": {
+        "url": row.images.standard_resolution.url,
+        "caption": row.caption.text,
         "credit": "@" + row.user.username
       },
+      "start_date": {
+        "month": tempDate.format("MM"),
+        "day": tempDate.format("DD"),
+        "year": tempDate.format("YYYY"),
+        "hour": tempDate.format("HH"),
+        "minute": tempDate.format("mm"),
+        "second": tempDate.format("ss")
+      },
+      "text": {
+        "headline": htag + " wedding",
+        "text": "<p>some body text</p>"
+      }
     }
   }
 
