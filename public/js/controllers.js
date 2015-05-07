@@ -20,6 +20,8 @@ instagramApp.controller('indexController', ['$scope', 'feedData', '$location',
 		feedData.setHashtag($scope.hashtag);
 		$location.path('/results');
 	};
+
+	
 }]);
 
 
