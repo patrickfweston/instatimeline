@@ -59,7 +59,7 @@ function instaToTimeline(data, htag) {
     instaObj.events[i] = {
       "media": {
         "url": row.images.standard_resolution.url,
-        "caption": row.caption.text,
+        "caption": "Test caption",
         "credit": "@" + row.user.username
       },
       "start_date": {
@@ -71,8 +71,8 @@ function instaToTimeline(data, htag) {
         "second": tempDate.format("ss")
       },
       "text": {
-        "headline": htag + " wedding",
-        "text": "<p>some body text</p>"
+        "headline": "#" + htag + " wedding",
+        "text": "<p>" + row.caption.text + "</p>"
       }
     }
   }
