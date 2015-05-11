@@ -47,12 +47,38 @@ label {
 
 
 input {
-    border: 3px solid #ddd;
-    box-shadow: none;
-    font-size: 100%;
-    width: 80%;
-    margin-bottom: 1em;
+   padding:.75rem;
+   background:#fff;
+   border:none;
+   border-radius:.25rem;
+   margin:.5rem .25rem;
+   color:#555459;
+   font-weight:700;
+   text-transform: uppercase;
+   font-size:1.1rem;
+   font-family:Lato,sans-serif;
+   -webkit-appearance:none;
+   vertical-align:bottom;
+   height:48px;
+   width:75%;
+
 }
+
+#generateButton{
+    background:#439fe0;
+    color:#fff;
+    font-weight:400;
+    padding:.75rem 2rem!important;
+    text-shadow:0 1px 2px #000;
+    text-shadow:0 1px 2px rgba(0,0,0,.5);
+    cursor:pointer;
+    width:auto;
+    -webkit-transition:background .1s ease-out .0000001ms;
+    -moz-transition:background .1s ease-out .0000001ms;
+    transition:background .1s ease-out .0000001ms;
+}
+
+
 
 
 /*
@@ -92,7 +118,7 @@ input {
     padding: 1em 1.6em;
     font-weight: 100;
     border-radius: 5px;
-    line-height: 1em;
+    line-height: 0.5em;
 }
 
 /* This is the subheading that appears on the blue section */
