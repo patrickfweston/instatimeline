@@ -13,3 +13,8 @@ html, body, #wrapper {
 .timeline {
   height: 80%;
 }
+
+.commitClass{
+  height: 100%;
+
+}
