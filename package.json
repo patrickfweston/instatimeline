@@ -14,7 +14,8 @@
     "karma-junit-reporter": "^0.2.2",
     "express": "^4.9.8",
     "request": "2.x",
-    "moment": "2.10.x"
+    "moment": "2.10.x",
+    "instagram-node": "0.5.x"
   },
   "dependencies": {
     "karma": "~0.10",
@@ -25,7 +26,8 @@
     "karma-junit-reporter": "^0.2.2",
     "express": "^4.9.8",
     "request": "2.x",
-    "moment": "2.10.x"
+    "moment": "2.10.x",
+    "instagram-node": "0.5.x"
   },
   "engines": {
     "node": "0.10.x"
