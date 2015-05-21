@@ -41,49 +41,6 @@ app.get('/feed', function(req, res) {
   ig.tag_media_recent(req.query.hashtag, hdl);
 });
 
-//   var instaReq = '/tags/' + req.query.hashtag + '/media/recent?';
-//   var fullUrl = instagramURL + instaReq;
-
-//   var config = {
-//     client_id: clientId,
-//   };
-
-//   console.log(fullUrl + "?client_id=" + config.client_id);
-
-//   var data = "";
-
-//   request({url:fullUrl, qs: config})
-//     .on('data', function(d) {
-//       data += d;
-//     })
-//     .on('end', function() {
-//       tempdata = JSON.parse(data);
-//       if (tempdata.pagination.next_url) {
-//         paginationData = moreData(tempdata.pagination.next_url);
-//         // data = JSON.parse(data);
-//         // data.concat(paginationData);
-//         // res.json(instaToTimeline(data, req.query.hashtag));
-//       }
-//     });
-// });
-
-// function moreData(fullUrl) {
-//   var data = "";
-//   console.log("called with: " + fullUrl);
-//   request({url:fullUrl})
-//     .on('data', function(d) {
-//       data += d;
-//     })
-//     .on('end', function() {
-//       var tempdata = JSON.parse(data);
-//       if (tempdata.pagination.next_url) {
-//         return tempdata.concat(moreData(tempdata.pagination.next_url));
-//       } else {
-//         return JSON.parse(data)
-//       }
-//     });
-// }
-
 function instaToTimeline(d, htag, count) {
   var instaObj = {
     "title": {

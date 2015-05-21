@@ -3,10 +3,17 @@
 //create a data structure (hash map with events as keys and keywords as values)
 var keyWords= {
 	'engagement': ['yes', 'proposed', 'proposal'],
+
     'reception': ['reception'],
+    
     'wedding_shower': ['weddingshower', 'shower', 'bridalshower'],
+    
     'bachelorette_party' : ['bachelorette'],
+    // emojis
+    // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
+    // love is a bad keyword "love sucks as a query"
     'wedding_day': ['bigday', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'love', 'cake'],
+    
     'rehersal_dinner' : ['tomorrow', 'rehersal']
     };
 
