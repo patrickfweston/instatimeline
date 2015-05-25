@@ -10,8 +10,12 @@ var keyWords= {
     'rehersal_dinner' : ['tomorrow', 'rehersal']
     };
 
-alert(JSON.stringify(keyWords, null, 4));
 
+
+
+
+alert(JSON.stringify(keyWords, null, 4));
+    
 var keys = [];
 var keyValues = [];
 for( var key in keyWords){
@@ -32,12 +36,4 @@ if(captions.contains(keyValues)){
 	return captions.indexOf(keyValues);
 }
 
-// Search the photos to see if the captions match any of these keywords.
-// For all of the photos that match a given set of keywords, tag those photos with an internal tag.
-// Ex: If we’re searching for shower, brunch, gifts, etc. then tag all of these internally with something like wedding_shower
-// For each set of internal tags (wedding_shower in the previous example) look for other photos that are temporally close.
-// We’re making the assumption that these photos are probably from the same event
-// Go ahead and tag them with the similar tag
-// Remove the photos from the set to be tagged
-// Within each set of tags, pick out the n most-liked photos
-// Display the photos from each set, in time order, on the timeline
+

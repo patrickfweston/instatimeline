@@ -17,8 +17,7 @@ app.get('/feed', function(req, res) {
   var fullUrl = instagramURL + instaReq;
 
   var config = {
-    client_id: clientId,
-    count: req.query.count,
+    client_id: clientId
   };
 
   var data = "";
@@ -51,11 +50,13 @@ function instaToTimeline(data, htag) {
   for (i = 0; i < (data.data).length; i++) {
     row = data.data[i];
     
-    // console.log("Tags for each picture: " + JSON.stringify(row.tags));
-    // console.log("Comments count: " + JSON.stringify(row.comments.count));
-    // console.log("Comments text: " + JSON.stringify(row.comments));
-    // console.log("LIKES COUNT " + JSON.stringify(row.likes.count));
-    // console.log("CAPTION TEXT: " + JSON.stringify(row.caption.text));
+    console.log("Tags for each picture: " + JSON.stringify(row.tags,null,4));
+     console.log("Comments count: " + JSON.stringify(row.comments.count));
+     console.log("Comments text: " + JSON.stringify(row.comments));
+     console.log("LIKES COUNT " + JSON.stringify(row.likes.count));
+     console.log("CAPTION TEXT: " + JSON.stringify(row.caption.text));
+     console.log("DATA: " + JSON.stringify(row, null, 4));
+
     
     tempDate = moment(new Date(row.created_time * 1000));
     // dateString = tempDate.format("YYYY,MM,DD,HH,mm,ss")
