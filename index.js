@@ -66,24 +66,22 @@ app.get('/feed', function(req, res) {
       finalResult = "{" + finalResult + "}";
       finalResult = JSON.parse(finalResult);
 
-      var key_index = 0;
       for(var i = 0 ; i < Object.keys(finalResult).length; i++){
          for(var j = 0; j < Object.keys(finalResult[i]).length; j++){
             console.log("captions: " + JSON.stringify(finalResult[i][j].caption.text.toLowerCase(), null,4));
 
             var captions = JSON.stringify(finalResult[i][j].caption.text.toLowerCase());
 
+                var key_index = 0;
                 while(key_index < keys.length){
-                        for (var i in keyWords[keys[key_index]]) {
-                        var index = new RegExp("\\b" + keyWords[keys[key_index]][i] + "\\b", "i");
-                        if (captions.match(index)) {
-                            console.log(keyWords[keys[key_index]][i]);
-                            console.log("internal tags: " + keys[key_index]);
-                        }
-                        
-                      }
-                    key_index++;
-                    
+                  for (var k in keyWords[keys[key_index]]) {
+                    var index = new RegExp("\\b" + keyWords[keys[key_index]][k] + "\\b", "i");
+                    if (captions.match(index)) {
+                        console.log(keyWords[keys[key_index]][k]);
+                        console.log("internal tags: " + keys[key_index]);
+                    }
+                  }
+                  key_index++;    
                 }
 
          }
