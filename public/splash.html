@@ -1,15 +1,21 @@
 <div class="splash-container">
     <div class="splash">
-        <h1 class="splash-head">InstaTimeline</h1>
+        <h1 class="splash-head">Insta<span class="light">Timeline</span></h1>
         <p class="splash-subhead">
-            InstaTimeline is  designed to create a beautifully crafted timeline customized to your wedding. Simply enter in the event’s unique hashtag and InstaTimeline does the rest.
-
+            InstaTimeline creates a beautifully crafted timeline customized to your wedding. Enter your hashtag and get started.
         </p>
 
-          <input ng-model="hashtag" placeholder="pagingthemarcels"></input> 
+          <div class="input-wrapper"><span class="input-tag">#</span><input class="input" ng-model="hashtag" placeholder=""></input></div>
 
         <p>
             <a ng-click="generate()" id = "generateButton" class="pure-button pure-button-primary">Generate</a>
         </p>
     </div>
+    <div class="credit">Photo credit: http://www.russellordphoto.com/<div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.input').focus();
+        console.log('focused');
+    });
+    </script>
 </div>
