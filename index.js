@@ -68,7 +68,7 @@ app.get('/feed', function(req, res) {
 
       for(var i = 0 ; i < Object.keys(finalResult).length; i++){
          for(var j = 0; j < Object.keys(finalResult[i]).length; j++){
-            console.log("captions: " + JSON.stringify(finalResult[i][j].caption.text.toLowerCase(), null,4));
+            // console.log("captions: " + JSON.stringify(finalResult[i][j].caption.text.toLowerCase(), null,4));
 
             var captions = JSON.stringify(finalResult[i][j].caption.text.toLowerCase());
 
@@ -77,8 +77,10 @@ app.get('/feed', function(req, res) {
                   for (var k in keyWords[keys[key_index]]) {
                     var index = new RegExp("\\b" + keyWords[keys[key_index]][k] + "\\b", "i");
                     if (captions.match(index)) {
-                        console.log(keyWords[keys[key_index]][k]);
                         console.log("internal tags: " + keys[key_index]);
+                        finalResult[i][j].internalTag = keys[key_index];
+                        console.log("FINAL RESULT INTERNAL TAGGING: " + JSON.stringify(finalResult[i][j], null, 4));
+
                     }
                   }
                   key_index++;    
@@ -122,7 +124,7 @@ function instaToTimeline(d, htag, count) {
       instaObj.events[items] = {
         "media": {
           "url": row.images.standard_resolution.url,
-          "caption": "Test caption",
+          "caption": row.internalTag,
           "credit": "@" + row.user.username
         },
         "start_date": {
