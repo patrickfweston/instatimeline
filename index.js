@@ -42,11 +42,11 @@ app.get('/feed', function(req, res) {
         finalResult = JSON.parse(finalResult);
 
         var keyWords = {
-          'engagement': ['yes', 'proposed', 'proposal', 'engagement'],
+          'engagement': ['yes', 'proposed', 'proposal', 'engagement party'],
 
           'wedding_shower': ['wedding shower', 'shower', 'bridal'],
 
-          'bachelorette_party': ['bachelorette', 'party'],
+          'bachelorette_party': ['bachelorette'],
 
           'rehearsal_dinner': ['tomorrow', 'rehearsal dinner'],
 
