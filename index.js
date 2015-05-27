@@ -13,47 +13,21 @@ app.get('/feed', function(req, res) {
   var instagramURL = "https://api.instagram.com/v1";
   // get your own client id http://instagram.com/developer/
   var instaClientId = '6a4536f6c1334d1cb0e37519930b084c';
-  ig.use({ client_id: 'b22f1558148641a5a06eaeb8e2d06f16',
-         client_secret: '26ddac68deb14c1a91c0fc3547471ae7' });
+  ig.use({
+    client_id: 'b22f1558148641a5a06eaeb8e2d06f16',
+    client_secret: '26ddac68deb14c1a91c0fc3547471ae7'
+  });
 
   var allResults = [];
   var count = 0;
   var hdl = function(err, result, pagination, remaining, limit) {
     // Your implementation here
-  
-  var keyWords= {
-
-  'engagement': ['yes', 'proposed', 'proposal', 'engagement'],
-
-  'reception': ['reception'],
-  
-  'wedding_shower': ['wedding shower', 'shower', 'bridal'],
-  
-  'bachelorette_party' : ['bachelorette', 'party'],
-  // emojis
-  // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
-  'wedding_day': [ 'I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid'],
-  
-  'rehersal_dinner' : ['tomorrow', 'rehersal', 'dinner'],
-
-  'throw_back' : ['tbt']
 
 
-  };
-
-  var keys = [];
-  var keyValues = [];
-  for( var key in keyWords){
-    if (keyWords.hasOwnProperty(key)){
-      keys.push(key);
-      keyValues.push(keyWords[key]);
-      
-    }
-  }
 
     allResults[count] = JSON.stringify(result);
     count = count + 1;
-    if(pagination.next) {
+    if (pagination.next) {
       pagination.next(hdl); // Will get second page results
     } else {
       var finalResult = "";
@@ -65,30 +39,8 @@ app.get('/feed', function(req, res) {
       }
       finalResult = "{" + finalResult + "}";
       finalResult = JSON.parse(finalResult);
+      finalResult = tagPhotos(finalResult);
 
-      for(var i = 0 ; i < Object.keys(finalResult).length; i++){
-         for(var j = 0; j < Object.keys(finalResult[i]).length; j++){
-            // console.log("captions: " + JSON.stringify(finalResult[i][j].caption.text.toLowerCase(), null,4));
-
-            var captions = JSON.stringify(finalResult[i][j].caption.text.toLowerCase());
-
-                var key_index = 0;
-                while(key_index < keys.length){
-                  for (var k in keyWords[keys[key_index]]) {
-                    var index = new RegExp("\\b" + keyWords[keys[key_index]][k] + "\\b", "i");
-                    if (captions.match(index)) {
-                        console.log("internal tags: " + keys[key_index]);
-                        finalResult[i][j].internalTag = keys[key_index];
-                        console.log("FINAL RESULT INTERNAL TAGGING: " + JSON.stringify(finalResult[i][j], null, 4));
-
-                    }
-                  }
-                  key_index++;    
-                }
-
-         }
-
-       }
 
       x = instaToTimeline(finalResult, req.query.hashtag, count);
       res.json(x);
@@ -96,6 +48,63 @@ app.get('/feed', function(req, res) {
   };
   ig.tag_media_recent(req.query.hashtag, hdl);
 });
+
+function tagPhotos(finalResult) {
+  var keyWords = {
+
+    'engagement': ['yes', 'proposed', 'proposal', 'engagement'],
+
+    'reception': ['reception'],
+
+    'wedding_shower': ['wedding shower', 'shower', 'bridal'],
+
+    'bachelorette_party': ['bachelorette', 'party'],
+    // emojis
+    // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
+    'wedding_day': ['I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid'],
+
+    'rehersal_dinner': ['tomorrow', 'rehersal', 'dinner'],
+
+    'throw_back': ['tbt']
+
+
+  };
+
+  var keys = [];
+  var keyValues = [];
+  for (var key in keyWords) {
+    if (keyWords.hasOwnProperty(key)) {
+      keys.push(key);
+      keyValues.push(keyWords[key]);
+
+    }
+  }
+
+  for (var i = 0; i < Object.keys(finalResult).length; i++) {
+    for (var j = 0; j < Object.keys(finalResult[i]).length; j++) {
+      // console.log("captions: " + JSON.stringify(finalResult[i][j].caption.text.toLowerCase(), null,4));
+
+      var captions = JSON.stringify(finalResult[i][j].caption.text.toLowerCase());
+
+      var key_index = 0;
+      while (key_index < keys.length) {
+        for (var k in keyWords[keys[key_index]]) {
+          var index = new RegExp("\\b" + keyWords[keys[key_index]][k] + "\\b", "i");
+          if (captions.match(index)) {
+            console.log("internal tags: " + keys[key_index]);
+            finalResult[i][j].internalTag = keys[key_index];
+            console.log("FINAL RESULT INTERNAL TAGGING: " + JSON.stringify(finalResult[i][j], null, 4));
+
+          }
+        }
+        key_index++;
+      }
+
+    }
+
+  }
+  return finalResult;
+}
 
 function instaToTimeline(d, htag, count) {
   var instaObj = {
@@ -148,8 +157,8 @@ function instaToTimeline(d, htag, count) {
   return JSON.parse(JSON.stringify(instaObj));
 }
 
-app.get('*', function (req, res) {
-    res.sendFile('index.html');
+app.get('*', function(req, res) {
+  res.sendFile('index.html');
 });
 
 app.listen(app.get('port'), function() {
