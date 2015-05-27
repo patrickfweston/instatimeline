@@ -6,6 +6,10 @@ html, body, #wrapper {
   font-family: 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 
+.atss {
+  top: 10% !important;
+}
+
 .splash-container {
   background: url('http://www.bridalguide.com/sites/default/files/slideshow-images/269-149894.jpg') no-repeat center center fixed;
   background-size: cover;
