@@ -27,59 +27,64 @@ app.get('/feed', function(req, res) {
 
     allResults[count] = JSON.stringify(result);
     count = count + 1;
-    if (pagination.next) {
-      pagination.next(hdl); // Will get second page results
-    } else {
-      var finalResult = "";
-      for (i = 0; i < allResults.length; i++) {
-        finalResult += ('"' + i.toString() + '":' + allResults[i]);
-        if (i + 1 < allResults.length) {
-          finalResult += ",";
+    try {
+      if (pagination.next) {
+        pagination.next(hdl); // Will get second page results
+      } else {
+        var finalResult = "";
+        for (i = 0; i < allResults.length; i++) {
+          finalResult += ('"' + i.toString() + '":' + allResults[i]);
+          if (i + 1 < allResults.length) {
+            finalResult += ",";
+          }
         }
-      }
-      finalResult = "{" + finalResult + "}";
-      finalResult = JSON.parse(finalResult);
+        finalResult = "{" + finalResult + "}";
+        finalResult = JSON.parse(finalResult);
 
-      var keyWords = {
-        'engagement': ['yes', 'proposed', 'proposal', 'engagement'],
+        var keyWords = {
+          'engagement': ['yes', 'proposed', 'proposal', 'engagement'],
 
-        'wedding_shower': ['wedding shower', 'shower', 'bridal'],
+          'wedding_shower': ['wedding shower', 'shower', 'bridal'],
 
-        'bachelorette_party': ['bachelorette', 'party'],
+          'bachelorette_party': ['bachelorette', 'party'],
 
-        'rehersal_dinner': ['tomorrow', 'rehersal', 'dinner'],
+          'rehersal_dinner': ['tomorrow', 'rehersal', 'dinner'],
 
-        // emojis
-        // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
-        'wedding_day': ['I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid'],
+          // emojis
+          // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
+          'wedding_day': ['I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid'],
 
-        'reception': ['reception'],
+          'reception': ['reception'],
 
-        'throw_back': ['tbt']
-      };
+          'throw_back': ['tbt']
+        };
 
-      var keys = [];
-      var keyValues = [];
-      for (var key in keyWords) {
-        if (keyWords.hasOwnProperty(key)) {
-          keys.push(key);
-          keyValues.push(keyWords[key]);
+        var keys = [];
+        var keyValues = [];
+        for (var key in keyWords) {
+          if (keyWords.hasOwnProperty(key)) {
+            keys.push(key);
+            keyValues.push(keyWords[key]);
 
+          }
         }
+
+        finalResult = tagPhotos(finalResult, keys, keyValues, keyWords);
+
+        // finalResult as returned from reorderPhotos is a giant array, not a complicated
+        // JSON object like before
+        finalResult = reorderPhotos(finalResult, keys, keyValues, keyWords);
+
+
+        x = instaToTimeline(finalResult, req.query.hashtag);
+        res.json(x);
       }
-
-      finalResult = tagPhotos(finalResult, keys, keyValues, keyWords);
-
-      // finalResult as returned from reorderPhotos is a giant array, not a complicated
-      // JSON object like before
-      finalResult = reorderPhotos(finalResult, keys, keyValues, keyWords);
-
-
-      x = instaToTimeline(finalResult, req.query.hashtag);
-      res.json(x);
+    } catch (e) {
+      console.log("Error detected:", e);
     }
+
   };
-  ig.tag_media_recent(req.query.hashtag, hdl);
+  x = ig.tag_media_recent(req.query.hashtag, hdl);
 });
 
 function tagPhotos(finalResult, keys, keyValues, keyWords) {
@@ -175,7 +180,7 @@ function instaToTimeline(d, htag) {
       },
       "text": {
         "headline": "#" + htag + " wedding",
-        "text": "Some body text here"
+        "text": ""
       }
     },
     "events": []
@@ -184,6 +189,31 @@ function instaToTimeline(d, htag) {
   for (j = 0; j < d.length; j++) {
     row = d[j];
     tempDate = moment(new Date(row.created_time * 1000));
+
+    var eventSection = "";
+    switch(row.internalTag) {
+      case "engagement":
+        eventSection = "Engagement";
+        break;
+      case "wedding_shower":
+        eventSection = "Wedding Shower";
+        break;
+      case "bachelorette_party":
+        eventSection = "Bachelorette Party";
+        break;
+      case "rehersal_dinner":
+        eventSection = "Rehersal Dinner";
+        break;
+      case "wedding_day":
+        eventSection = "Wedding Day";
+        break;
+      case "reception":
+        eventSection = "Reception";
+        break;
+      case "throw_back":
+        eventSection = "Throw Back Thursday";
+        break;
+    }
 
     instaObj.events[j] = {
       "media": {
@@ -200,7 +230,7 @@ function instaToTimeline(d, htag) {
         "second": tempDate.format("ss")
       },
       "text": {
-        "headline": "#" + htag + " wedding",
+        "headline": eventSection,
         "text": "<p>" + row.caption.text + "</p>"
       }
     }
