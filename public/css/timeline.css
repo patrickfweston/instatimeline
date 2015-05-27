@@ -2,7 +2,7 @@ html, body, #wrapper {
   height: 100%;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   font-family: 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 
@@ -15,7 +15,12 @@ html, body, #wrapper {
   height: 100%;
   top: 0;
   left: 0;
-  position: fixed !important;
+  position: relative !important;
+}
+
+.splash-wrapper {
+  height: 100%;
+  width: 100%;
 }
 
 .splash-head {
@@ -30,6 +35,36 @@ html, body, #wrapper {
   width: 80%;
   margin: 0 auto;
   padding: 20px 0;
+}
+
+.learn-more {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 80%;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.learn-more::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid rgba(0, 0, 0, 0);
+  border-right: 10px solid rgba(0, 0, 0, 0);
+  border-top: 10px solid #FFF;
+  margin: 0 auto;
+  display: block;
+}
+
+.example {
+  height: 100%;
+  width: 100%;
 }
 
 .input-wrapper {
