@@ -48,7 +48,7 @@ app.get('/feed', function(req, res) {
 
           'bachelorette_party': ['bachelorette', 'party'],
 
-          'rehersal_dinner': ['tomorrow', 'rehersal', 'dinner'],
+          'rehearsal_dinner': ['tomorrow', 'rehearsal dinner'],
 
           // emojis
           // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
