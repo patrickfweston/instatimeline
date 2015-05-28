@@ -201,7 +201,7 @@ function instaToTimeline(d, htag) {
       case "bachelorette_party":
         eventSection = "Bachelorette Party";
         break;
-      case "rehersal_dinner":
+      case "rehearsal_dinner":
         eventSection = "Rehersal Dinner";
         break;
       case "wedding_day":
