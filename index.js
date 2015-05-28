@@ -219,7 +219,8 @@ function instaToTimeline(d, htag) {
       "media": {
         "url": row.images.standard_resolution.url,
         "caption": row.internalTag,
-        "credit": "@" + row.user.username
+        "credit": "@" + row.user.username,
+        "thumb": row.images.standard_resolution.url
       },
       "start_date": {
         "month": tempDate.format("MM"),
@@ -232,7 +233,7 @@ function instaToTimeline(d, htag) {
       "text": {
         "headline": eventSection,
         "text": "<p>" + row.caption.text + "</p>"
-      }
+      },
     }
   }
 
