@@ -2,7 +2,123 @@ html, body, #wrapper {
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: visible;
+  font-family: 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+.atss {
+  top: 10% !important;
+}
+
+.splash-container {
+  background: url('http://www.bridalguide.com/sites/default/files/slideshow-images/269-149894.jpg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: 1;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: relative !important;
+}
+
+.splash-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.splash-head {
+  border: 0;
+  padding: 0;
+}
+
+.splash-subhead {
+  text-transform: none;
+  font-size: 110%;
+  line-height: 175%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.learn-more {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 80%;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.learn-more::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid rgba(0, 0, 0, 0);
+  border-right: 10px solid rgba(0, 0, 0, 0);
+  border-top: 10px solid #FFF;
+  margin: 0 auto;
+  display: block;
+}
+
+.example {
+  height: 100%;
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 66.66%;
+  margin: 0 auto;
+}
+
+.input {
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 2px dotted#EDEDED;
+  color: #FFF !important;
+  font-size: 150% !important;
+  padding-left: 35px;
+  width: 100%;
+  text-transform: none;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.input-tag {
+  position: absolute;
+  top: 11px;
+  left: 8px;
+  font-size: 250%;
+  color: #fff;
+}
+
+.credit {
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  font-size: 8px;
+  color: #666;
+}
+
+@media (min-width: 78em) {
+  .splash-head {
+    font-size: 400%;
+    padding: 0;
+  }
+}
+
+.splash {
+  top: -150px;
+  height: 300px;
+}
+
+.light {
+  font-weight: 300;
 }
 
 .timeline--above {
@@ -14,10 +130,12 @@ html, body, #wrapper {
   height: 80%;
 }
 
-[css].classname {
-color: #333333;
-font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
-}[/css]
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
 /*Style for yourtimeline */
 

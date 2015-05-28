@@ -1,43 +1,48 @@
 
-// Start with a fixed set of keywords pertaining to different events within a wedding.
-//create a data structure (hash map with events as keys and keywords as values)
-var keyWords= {
-	'engagement': ['yes', 'proposed', 'proposal'],
-    'reception': ['reception'],
-    'wedding_shower': ['weddingshower', 'shower', 'bridalshower'],
-    'bachelorette_party' : ['bachelorette'],
-    'wedding_day': ['bigday', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'love', 'cake'],
-    'rehersal_dinner' : ['tomorrow', 'rehersal']
-    };
+// // Start with a fixed set of keywords pertaining to different events within a wedding.
+// //create a data structure (hash map with events as keys and keywords as values)
+// var keyWords= {
+//     'engagement': ['yes', 'proposed', 'proposal'],
 
-alert(JSON.stringify(keyWords, null, 4));
-
-var keys = [];
-var keyValues = [];
-for( var key in keyWords){
-  if (keyWords.hasOwnProperty(key)){
-    keys.push(key);
-    keyValues.push(keyWords[key]);
+//     'reception': ['reception'],
     
-  }
-}
+//     'wedding_shower': ['wedding shower', 'shower', 'bridal'],
+    
+//     'bachelorette_party' : ['bachelorette', 'party'],
+//     // emojis
+//     // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
+//     'wedding_day': [ 'I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married'],
+    
+//     'rehersal_dinner' : ['tomorrow', 'rehersal', 'dinner']
+//     };
 
-alert(keys);
-alert(keyValues);
+
+
+
+    
+// var keys = [];
+// var keyValues = [];
+// for( var key in keyWords){
+//   if (keyWords.hasOwnProperty(key)){
+//     keys.push(key);
+//     keyValues.push(keyWords[key]);
+    
+//   }
+// }
+
                          
-captions = ['shower before my wedding', 'tomorrow is the big day I love everyone', 'love', 'blah', 'larry is smart', 'birnbaum is cool', '395 is the best class ever'];
+// var captions = "I love my big day because there is an aisle";
+// var key_index = 0;
 
-
-if(captions.contains(keyValues)){
-	return captions.indexOf(keyValues);
-}
-
-// Search the photos to see if the captions match any of these keywords.
-// For all of the photos that match a given set of keywords, tag those photos with an internal tag.
-// Ex: If we’re searching for shower, brunch, gifts, etc. then tag all of these internally with something like wedding_shower
-// For each set of internal tags (wedding_shower in the previous example) look for other photos that are temporally close.
-// We’re making the assumption that these photos are probably from the same event
-// Go ahead and tag them with the similar tag
-// Remove the photos from the set to be tagged
-// Within each set of tags, pick out the n most-liked photos
-// Display the photos from each set, in time order, on the timeline
+// while(key_index < keys.length){
+//         for (var i in keyWords[keys[key_index]]) {
+//         var index = new RegExp("\\b" + keyWords[keys[key_index]][i] + "\\b", "i");
+//         if (captions.match(index)) {
+//             alert(keyWords[keys[key_index]][i]);
+//             alert("internal tags: " + keys[key_index]);
+//         }
+        
+//       }
+//     key_index++;
+    
+// }
