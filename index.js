@@ -42,19 +42,23 @@ app.get('/feed', function(req, res) {
         finalResult = JSON.parse(finalResult);
 
         var keyWords = {
-          'engagement': ['yes', 'proposed', 'proposal', 'engagement party'],
+          'engagement': ['shesaidyes', 'proposed', 'proposal', 'engagement party', 'she said yes', 'engagment ring', 'engaged', 'engagement'],
 
-          'wedding_shower': ['wedding shower', 'shower', 'bridal'],
+          'wedding_shower': ['wedding shower', 'shower'],
 
-          'bachelorette_party': ['bachelorette'],
+          'bachelor/bachelorette_party': ['bachelorette', 'bachelorette party','bachelor party', 'bachelor'],
 
-          'rehearsal_dinner': ['tomorrow', 'rehearsal dinner'],
+          'dress_shopping': ['shopping', 'trying on', 'yes to the dress'],
+
+          'rehearsal_dinner': ['tomorrow', 'rehearsal dinner', 'big day tomorrow', 'practice'],
 
           // emojis
           // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
-          'wedding_day': ['I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid'],
+          'wedding_day': ['I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid', 'rings', 'husband and wife', 'line up'],
 
-          'reception': ['reception'],
+          'reception': ['reception', 'speeches', 'toast', 'first dance', 'wedding cake', 'cake', 'bouquet toss', 'garter'],
+
+          'drive_away': ['sparklers', 'just married'],
 
           'throw_back': ['tbt']
         };
@@ -198,17 +202,25 @@ function instaToTimeline(d, htag) {
       case "wedding_shower":
         eventSection = "Wedding Shower";
         break;
-      case "bachelorette_party":
-        eventSection = "Bachelorette Party";
+      case "bachelor/bachelorette_party":
+        eventSection = "Bachelor/Bachelorette Party";
         break;
+
+      case "dress_shopping":
+        eventSection = "Dress Shopping"
+        break;
+
       case "rehearsal_dinner":
-        eventSection = "Rehersal Dinner";
+        eventSection = "Rehearsal Dinner";
         break;
       case "wedding_day":
         eventSection = "Wedding Day";
         break;
       case "reception":
         eventSection = "Reception";
+        break;
+      case "drive_away":
+        eventSection = "Drive Away";
         break;
       case "throw_back":
         eventSection = "Throw Back Thursday";
