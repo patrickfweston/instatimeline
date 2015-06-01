@@ -175,10 +175,21 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
 }
 
 function instaToTimeline(d, htag) {
+  maxLikes = 0;
+  url = '';
+  for (j = 0; j < d.length; j++) {
+    row = d[j];
+    if (row.likes.count > maxLikes) {
+      console.log(row.likes.count)
+      maxLikes = row.likes.count;
+      url = row.images.standard_resolution.url;
+    }
+  }
+
   var instaObj = {
     "title": {
       "media": {
-        "url": "",
+        "url": url,
         "caption": "",
         "credit": ""
       },
