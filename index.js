@@ -175,16 +175,24 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
 }
 
 function instaToTimeline(d, htag) {
-  maxLikes = 0;
-  url = '';
-  for (j = 0; j < d.length; j++) {
-    row = d[j];
-    if (row.likes.count > maxLikes) {
-      console.log(row.likes.count)
-      maxLikes = row.likes.count;
-      url = row.images.standard_resolution.url;
-    }
+  // Maximum likes for cover image (disabled cuz it's a weird pic)
+  // maxLikes = 0;
+  // url = '';
+  // for (j = 0; j < d.length; j++) {
+    
+  //   if (row.likes.count > maxLikes) {
+  //     console.log(row.likes.count)
+  //     maxLikes = row.likes.count;
+  //     url = row.images.standard_resolution.url;
+  //   }
+  // }
+
+  if (d.length > 7) {
+    row = d[7];
+  } else {
+    row = Math.random() * (d.length - 1);
   }
+  url = row.images.standard_resolution.url;
 
   var instaObj = {
     "title": {
@@ -194,7 +202,7 @@ function instaToTimeline(d, htag) {
         "credit": ""
       },
       "text": {
-        "headline": "#" + htag + " wedding",
+        "headline": "#" + htag,
         "text": ""
       }
     },

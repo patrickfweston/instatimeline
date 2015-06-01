@@ -10,6 +10,11 @@ html, body, #wrapper {
   top: 10% !important;
 }
 
+/*hide times*/
+.vco-timeaxis .vco-timeaxis-content-container .vco-timeaxis-major .vco-timeaxis-tick .vco-timeaxis-tick-text, .vco-timeaxis .vco-timeaxis-content-container .vco-timeaxis-minor .vco-timeaxis-tick .vco-timeaxis-tick-text {
+  display: none !important;
+}
+
 .splash-container {
   background: url('http://www.bridalguide.com/sites/default/files/slideshow-images/269-149894.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -25,20 +30,16 @@ html, body, #wrapper {
 .splash-wrapper {
   height: 100%;
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .splash-head {
   border: 0;
   padding: 0;
   border-radius: 0;
-}
-
-.timeline--above .splash-head {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .splash-subhead {
@@ -131,12 +132,13 @@ html, body, #wrapper {
 }
 
 .timeline--above {
-  height: 150px;
+  height: 20%;
   overflow: hidden;
 }
 
 .timeline {
-  height: 80%;
+  height: 77.5%;
+  padding-top: 2.5%;
 }
 
 input:focus,
@@ -156,6 +158,15 @@ button:focus {
   text-transform: uppercase;
 }
 
+.splash-wrapper--results {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .banner-photos {
   height: 100%;
   width: 150%;
@@ -167,8 +178,9 @@ button:focus {
 }
 
 .banner-main{
+  position: relative;
   background-color: #ddd;
-  height: 150px;
+  height: 100%;
 }
 
 .banner-main h1 {
@@ -204,6 +216,11 @@ button:focus {
 
 .loading--timeline.show {
   display: block;
+}
+
+/*Center the opening slide*/
+.vco-slide:first-child .vco-slide-scrollable-container {
+  margin-left: 100px;
 }
 
 h1{
