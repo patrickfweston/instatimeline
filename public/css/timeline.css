@@ -51,6 +51,23 @@ html, body, #wrapper {
   padding: 20px 0;
 }
 
+.example-hashtags {
+  margin-top: 50px;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.background-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .learn-more {
   position: absolute;
   bottom: 15px;
@@ -123,7 +140,7 @@ html, body, #wrapper {
 }
 
 .splash {
-  top: -150px;
+  top: -250px;
   height: 300px;
 }
 
