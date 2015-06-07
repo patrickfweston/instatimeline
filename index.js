@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 8000));
 
 app.get('/feed', function(req, res) {
-  //have the base instagram URL 
+  //have the base instagram URL
   var instagramURL = "https://api.instagram.com/v1";
   // get your own client id http://instagram.com/developer/
   var instaClientId = '6a4536f6c1334d1cb0e37519930b084c';
@@ -94,7 +94,6 @@ app.get('/feed', function(req, res) {
 function tagPhotos(finalResult, keys, keyValues, keyWords) {
   for (var i = 0; i < Object.keys(finalResult).length; i++) {
     for (var j = 0; j < Object.keys(finalResult[i]).length; j++) {
-      // console.log("captions: " + JSON.stringify(finalResult[i][j].caption.text.toLowerCase(), null,4));
 
       var captions = JSON.stringify(finalResult[i][j].caption.text.toLowerCase());
 
@@ -125,7 +124,7 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
   }
 
   // Initialize an array of arrays such that the first index corresponds to
-  // the internal tag and the second array corresponds to the index in the 
+  // the internal tag and the second array corresponds to the index in the
   // complete list of photos. Example:
   // tempIndices[0] = [4, 51, 67] would mean that the 1st tag (engagement
   // in our case) is the internal tag for pictures with indices 4, 51, and 67.
@@ -142,7 +141,7 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
   for (var i = 0; i < photos.length; i++) {
     keyIndex = keys.indexOf(photos[i].internalTag);
 
-    // If we have a tag, put it in the arry
+    // If we have a tag, put it in the array
     if (keyIndex != -1) {
       // If we happen to be the first tag, then check to see if it's the
       // earliest date (so we can base our slideshow off of it)
@@ -154,10 +153,10 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
     }
     // Otherwise, we don't have a tag
     else {
-      tempIndices[keys.length].push(i);        
+      tempIndices[keys.length].push(i);
     }
   }
-  
+
   // Loop over the keys, ordering the photos according to their grouping
   for (var i = 0; i < keys.length; i++) {
     for (var j = 0; j < tempIndices[i].length; j++) {
@@ -179,7 +178,7 @@ function instaToTimeline(d, htag) {
   // maxLikes = 0;
   // url = '';
   // for (j = 0; j < d.length; j++) {
-    
+
   //   if (row.likes.count > maxLikes) {
   //     console.log(row.likes.count)
   //     maxLikes = row.likes.count;
