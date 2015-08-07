@@ -6,7 +6,6 @@ $('#my-timeline').bind('DOMNodeInserted DOMNodeRemoved', function() {
     $('.loading--timeline').fadeIn(600);
     $('.loading--message').hide();
     setTimeout(function() {
-      console.log('here!');
       var copies = $('.vco-timemarker-media').clone();
       setTimeout(function() {
         $('.banner-photos').hide().html($(copies).addClass('banner-image')).fadeIn(500);
