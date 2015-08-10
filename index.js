@@ -22,9 +22,6 @@ app.get('/feed', function(req, res) {
   var count = 0;
   var hdl = function(err, result, pagination, remaining, limit) {
     // Your implementation here
-
-
-
     allResults[count] = JSON.stringify(result);
     count = count + 1;
     try {
@@ -52,8 +49,6 @@ app.get('/feed', function(req, res) {
 
           'rehearsal_dinner': ['tomorrow', 'rehearsal dinner', 'big day tomorrow', 'practice'],
 
-          // emojis
-          // first dance, father-daughter, father daughter, father/daughter, first kiss, I do, just married, diamond
           'wedding_day': ['I do', 'big day', 'aisle', 'dance', 'vows', 'father', 'family', 'daughter', 'father daughter', 'cake', 'diamond', 'first kiss', 'just married', 'tonight', 'bridesmaid', 'rings', 'husband and wife', 'line up'],
 
           'reception': ['reception', 'speeches', 'toast', 'first dance', 'wedding cake', 'cake', 'bouquet toss', 'garter'],
@@ -102,9 +97,7 @@ function tagPhotos(finalResult, keys, keyValues, keyWords) {
         for (var k in keyWords[keys[key_index]]) {
           var index = new RegExp("\\b" + keyWords[keys[key_index]][k] + "\\b", "i");
           if (captions.match(index)) {
-            // console.log("internal tags: " + keys[key_index]);
-            finalResult[i][j].internalTag = keys[key_index];
-            console.log("FINAL RESULT INTERNAL TAGGING: " + JSON.stringify(finalResult[i][j], null, 4));
+            finalResult[i][j].internalTag = keys[key_index];          
           }
         }
         key_index++;
@@ -175,16 +168,16 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
 
 function instaToTimeline(d, htag) {
   // Maximum likes for cover image (disabled cuz it's a weird pic)
-  // maxLikes = 0;
-  // url = '';
-  // for (j = 0; j < d.length; j++) {
+  maxLikes = 0;
+  url = '';
+  for (j = 0; j < d.length; j++) {
 
-  //   if (row.likes.count > maxLikes) {
-  //     console.log(row.likes.count)
-  //     maxLikes = row.likes.count;
-  //     url = row.images.standard_resolution.url;
-  //   }
-  // }
+    if (row.likes.count > maxLikes) {
+      console.log(row.likes.count)
+      maxLikes = row.likes.count;
+      url = row.images.standard_resolution.url;
+    }
+  }
 
   if (d.length > 7) {
     row = d[7];
