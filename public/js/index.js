@@ -21,6 +21,7 @@ app.get('/feed', function(req, res) {
   var allResults = [];
   var count = 0;
   var hdl = function(err, result, pagination, remaining, limit) {
+    // Your implementation here
     allResults[count] = JSON.stringify(result);
     count = count + 1;
     try {
@@ -72,6 +73,7 @@ app.get('/feed', function(req, res) {
         // finalResult as returned from reorderPhotos is a giant array, not a complicated
         // JSON object like before
         finalResult = reorderPhotos(finalResult, keys, keyValues, keyWords);
+
 
         x = instaToTimeline(finalResult, req.query.hashtag);
         res.json(x);
@@ -138,6 +140,7 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
       // earliest date (so we can base our slideshow off of it)
       if (photos[i].created_time < minDate) {
         minDate = photos[i].created_time;
+        console.log('min date found', minDate);
       }
       tempIndices[keyIndex].push(i);
     }
@@ -155,22 +158,24 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
       // to their grouping, not their posting time
       t.created_time = parseInt(minDate) + i * 10 + j;
       t.created_time = t.created_time.toString();
+      console.log(t.created_time);
       temp.push(t);
     }
   }
+  console.log(tempIndices);
   return temp;
 }
 
-//Two paramers: 1) d: finalResults, htag: hashtag
 function instaToTimeline(d, htag) {
+  // Maximum likes for cover image (disabled cuz it's a weird pic)
   maxLikes = 0;
   url = '';
   for (j = 0; j < d.length; j++) {
-    row = d[j];
 
     if (row.likes.count > maxLikes) {
-        maxLikes = row.likes.count;
-        url = row.images.standard_resolution.url;
+      console.log(row.likes.count)
+      maxLikes = row.likes.count;
+      url = row.images.standard_resolution.url;
     }
   }
 
@@ -179,7 +184,6 @@ function instaToTimeline(d, htag) {
   } else {
     row = Math.random() * (d.length - 1);
   }
-
   url = row.images.standard_resolution.url;
 
   var instaObj = {
@@ -196,7 +200,6 @@ function instaToTimeline(d, htag) {
     },
     "events": []
   }
-  console.log("instaObj", instaObj);
 
   for (j = 0; j < d.length; j++) {
     row = d[j];
@@ -235,9 +238,6 @@ function instaToTimeline(d, htag) {
         break;
     }
 
-
-
-
     instaObj.events[j] = {
       "media": {
         "url": row.images.standard_resolution.url,
@@ -265,8 +265,7 @@ function instaToTimeline(d, htag) {
 
 app.get("/", function(req, res)
 {
-    console.log("res sending file");
-    res.sendFile( __dirname + "/public/" + "index.html" );
+    res.sendFile("index.html", {"root": __dirname});
 });
 
 
