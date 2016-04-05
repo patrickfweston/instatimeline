@@ -21,7 +21,6 @@ app.get('/feed', function(req, res) {
   var allResults = [];
   var count = 0;
   var hdl = function(err, result, pagination, remaining, limit) {
-    // Your implementation here
     allResults[count] = JSON.stringify(result);
     count = count + 1;
     try {
@@ -38,6 +37,8 @@ app.get('/feed', function(req, res) {
         finalResult = "{" + finalResult + "}";
         finalResult = JSON.parse(finalResult);
 
+        console.log("finalResult", finalResult);
+        
         var keyWords = {
           'engagement': ['shesaidyes', 'proposed', 'proposal', 'engagement party', 'she said yes', 'engagment ring', 'engaged', 'engagement'],
 
