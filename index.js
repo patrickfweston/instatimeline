@@ -238,6 +238,8 @@ function instaToTimeline(d, htag) {
         break;
     }
 
+    console.log("row", row);
+
     instaObj.events[j] = {
       "media": {
         "url": row.images.standard_resolution.url,
@@ -263,9 +265,12 @@ function instaToTimeline(d, htag) {
   return JSON.parse(JSON.stringify(instaObj));
 }
 
-app.get('*', function(req, res) {
-  res.sendFile('index.html');
+app.get("/", function(req, res)
+{
+    console.log("res sending file");
+    res.sendFile( __dirname + "/public/" + "index.html" );
 });
+
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
