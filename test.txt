@@ -6,3 +6,27 @@
 > angular-seed@0.0.0 postinstall /Users/patrickfweston/Sites/instatimeline
 > ./node_modules/bower/bin/bower install
 
+
+USE NPM CHECK UPDATES
+
+Use npm-check-updates and npm shrinkwrap
+For the curious who make it this far, here is what I recommend:
+
+Use npm-check-updates or npm outdated to suggest the latest versions.
+$ npm install -g npm-check-updates
+$ npm-check-updates
+Update package.json with new versions if you agree
+$ npm-check-updates -u
+Then do a clean install (w/o the rm I got some dependency warnings)
+$ rm -rf node_modules
+$ npm install 
+npm shrinkwrap exact versions to npm config file npm-shrinkwrap.json
+$ rm npm-shrinkwrap.json
+$ npm shrinkwrap
+npm install will now use exact versions in npm-shrinkwrap.json
+This is a way to transition out of development (all updates, all the time) to production (nobody touch nothing).
+
+npm-check-updates
+
+npm shrinkwrap
+
