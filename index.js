@@ -74,7 +74,6 @@ app.get('/feed', function(req, res) {
         // JSON object like before
         finalResult = reorderPhotos(finalResult, keys, keyValues, keyWords);
 
-
         x = instaToTimeline(finalResult, req.query.hashtag);
         res.json(x);
       }
@@ -140,7 +139,6 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
       // earliest date (so we can base our slideshow off of it)
       if (photos[i].created_time < minDate) {
         minDate = photos[i].created_time;
-        console.log('min date found', minDate);
       }
       tempIndices[keyIndex].push(i);
     }
@@ -158,22 +156,18 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
       // to their grouping, not their posting time
       t.created_time = parseInt(minDate) + i * 10 + j;
       t.created_time = t.created_time.toString();
-      console.log(t.created_time);
       temp.push(t);
     }
   }
-  console.log(tempIndices);
   return temp;
 }
 
 function instaToTimeline(d, htag) {
-  // Maximum likes for cover image (disabled cuz it's a weird pic)
   maxLikes = 0;
   url = '';
   for (j = 0; j < d.length; j++) {
 
     if (row.likes.count > maxLikes) {
-      console.log(row.likes.count)
       maxLikes = row.likes.count;
       url = row.images.standard_resolution.url;
     }
@@ -238,7 +232,8 @@ function instaToTimeline(d, htag) {
         break;
     }
 
-    console.log("row", row);
+
+
 
     instaObj.events[j] = {
       "media": {
