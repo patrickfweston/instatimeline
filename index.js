@@ -36,7 +36,6 @@ app.get('/feed', function(req, res) {
         }
         finalResult = "{" + finalResult + "}";
         finalResult = JSON.parse(finalResult);
-
         var keyWords = {
           'engagement': ['shesaidyes', 'proposed', 'proposal', 'engagement party', 'she said yes', 'engagment ring', 'engaged', 'engagement'],
 
@@ -87,9 +86,10 @@ app.get('/feed', function(req, res) {
 function tagPhotos(finalResult, keys, keyValues, keyWords) {
   for (var i = 0; i < Object.keys(finalResult).length; i++) {
     for (var j = 0; j < Object.keys(finalResult[i]).length; j++) {
-
+      if(finalResult[i][j].caption === null || finalResult[i][j].caption.text === null) {
+        finalResult[i][j].caption = { text: "No Caption Available"};
+      }
       var captions = JSON.stringify(finalResult[i][j].caption.text.toLowerCase());
-
       var key_index = 0;
       while (key_index < keys.length) {
         for (var k in keyWords[keys[key_index]]) {
@@ -165,6 +165,7 @@ function reorderPhotos(finalResult, keys, keyValues, keyWords) {
 function instaToTimeline(d, htag) {
   maxLikes = 0;
   url = '';
+
   for (j = 0; j < d.length; j++) {
     row = d[j];
 
@@ -180,8 +181,6 @@ function instaToTimeline(d, htag) {
     row = Math.random() * (d.length - 1);
   }
 
-  url = row.images.standard_resolution.url;
-
   var instaObj = {
     "title": {
       "media": {
@@ -196,7 +195,6 @@ function instaToTimeline(d, htag) {
     },
     "events": []
   }
-  console.log("instaObj", instaObj);
 
   for (j = 0; j < d.length; j++) {
     row = d[j];
@@ -265,7 +263,6 @@ function instaToTimeline(d, htag) {
 
 app.get("/", function(req, res)
 {
-    console.log("res sending file");
     res.sendFile( __dirname + "/public/" + "index.html" );
 });
 
