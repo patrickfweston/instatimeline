@@ -4,10 +4,10 @@ InstaTimeline
 DESCRIPTION
 
 InstaTimeline is a system built on top of TimelineJS in order to automatically generate a beautifully crafted timeline for specific events like weddings, concerts, sporting events, and etc.
+Currently, InstaTimeline is in beta version so we are focusing on real time wedding events and painting a story.
 
 EXAMPLE (BETA TESTING):
 Given a unique hashtag for a wedding, InstaTimeline fetches posts from Instagram, orders these posts chronologically and selects only the meaningful posts to display. The final result is a beautiful timeline capturing the essence of the wedding celebration, from the proposal through the last dance at the reception.
-
 
 
 
