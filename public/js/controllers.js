@@ -30,10 +30,6 @@ instagramApp.controller('instagramController', ['$scope', 'Instagram', '$http', 
 		feedUrl = '/feed/?hashtag=' + feedData.getHashtag();
 		console.log(feedUrl);
 
-	  // two arguments: the id of the Timeline container (no '#')
-	  // and the URL to your JSON data file. In this case, a relative URL.
-	  // window.timeline = new VCO.Timeline('my-timeline', feedUrl);
-
 	  timeline = new TL.Timeline('my-timeline', feedUrl);
 
 	  // You may also want to ensure that the timeline redraws 
