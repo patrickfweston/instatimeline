@@ -41,7 +41,7 @@
     "postinstall": "./node_modules/bower/bin/bower install",
 
     "prestart": "npm install",
-    "start": "nodemon index.js",
+    "start": "node index.js",
 
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
