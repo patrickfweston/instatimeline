@@ -13,7 +13,7 @@ config(['$routeProvider', function($routeProvider)
         templateUrl : 'results.html',
         controller  : 'instagramController'
     })
-    .when('/splash', {
+    .when('/', {
       templateUrl : 'splash.html',
       controller : 'indexController'
     })
