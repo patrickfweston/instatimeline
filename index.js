@@ -77,6 +77,7 @@ app.get('/feed', function(req, res) {
       }
     } catch (e) {
       console.log("Error detected:", e);
+
     }
 
   };

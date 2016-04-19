@@ -28,7 +28,6 @@ instagramApp.controller('indexController', ['$scope', 'feedData', '$location',
 instagramApp.controller('instagramController', ['$scope', 'Instagram', '$http', 'feedData',
 	function($scope, Instagram, $http, feedData){
 		feedUrl = '/feed/?hashtag=' + feedData.getHashtag();
-		console.log(feedUrl);
 
 	  timeline = new TL.Timeline('my-timeline', feedUrl);
 
